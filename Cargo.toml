@@ -10,5 +10,5 @@ edition = "2021"
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }
-# deno_bindgen = "0.7.0"
-deno_bindgen = {path="../deno_bindgen/deno_bindgen"}
+deno_bindgen = "0.7.0"
+# deno_bindgen = {path="../deno_bindgen/deno_bindgen"}

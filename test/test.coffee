@@ -2,29 +2,32 @@
 
 > ../bindings/bindings.ts > add1 add2 add3
 
-console.log(add1(
-  new Uint8Array([1,3,4])
-  new Uint8Array([5,8,4])
-))
+main = =>
+  a=new Uint8Array(5550)
+  crypto.getRandomValues(a)
 
-console.log(add2(
-  new Uint8Array([1])
-  new Uint8Array([5,8,4])
-))
+  a1 = add1(
+    a
+    a
+  )
 
-console.log(add3())
-###
+  a2 = add2(
+    new Uint8Array([1])
+    new Uint8Array([5,8,4])
+  )
+
+  a3 = add3()
+
+  #console.log(a1,a2,a3)
+  return
+
 sleep = =>
-  new Promise((resolve) => setTimeout(resolve, 1000))
+  new Promise((resolve) => setTimeout(resolve, 10))
 
 n = 0
 loop
-  c = add(
-    Math.round(10*Math.random()),
-    Math.round(10*Math.random())
-  )
+  main()
   if n++%10000 == 0
     gc()
     await sleep()
-    console.log(Deno.memoryUsage())
-###
+    console.log(n,Deno.memoryUsage())

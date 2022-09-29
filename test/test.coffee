@@ -1,8 +1,10 @@
 #!/usr/bin/env coffee
 
-> ../bindings/bindings.ts > add1 add2 add3
+> ../bindings/bindings.ts > add3
+# > ../bindings/bindings.ts > add1 add2 add3
 
 main = =>
+  ###
   a=new Uint8Array(5550)
   crypto.getRandomValues(a)
 
@@ -15,6 +17,7 @@ main = =>
     new Uint8Array([1])
     new Uint8Array([5,8,4])
   )
+  ###
 
   a3 = add3()
 

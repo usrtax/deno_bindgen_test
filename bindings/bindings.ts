@@ -20,7 +20,7 @@ function readPointer(v: any): Uint8Array {
   return buf
 }
 
-const url = new URL("../target/debug", import.meta.url)
+const url = new URL("../target/release", import.meta.url)
 let uri = url.toString()
 if (!uri.endsWith("/")) uri += "/"
 
@@ -42,48 +42,12 @@ const opts = {
     windows: uri + "deno.dll",
     linux: uri + "libdeno.so",
   },
-  policy: CachePolicy.NONE,
+  policy: undefined,
 }
 const _lib = await prepare(opts, {
-  add1: {
-    parameters: ["buffer", "usize", "buffer", "usize"],
-    result: "buffer",
-    nonblocking: false,
-  },
-  add2: {
-    parameters: ["buffer", "usize", "buffer", "usize"],
-    result: "buffer",
-    nonblocking: false,
-  },
   add3: { parameters: [], result: "buffer", nonblocking: false },
 })
 
-export function add1(a0: Uint8Array, a1: Uint8Array) {
-  const a0_buf = encode(a0)
-  const a1_buf = encode(a1)
-
-  let rawResult = _lib.symbols.add1(
-    a0_buf,
-    a0_buf.byteLength,
-    a1_buf,
-    a1_buf.byteLength,
-  )
-  const result = readPointer(rawResult)
-  return result
-}
-export function add2(a0: Uint8Array, a1: Uint8Array) {
-  const a0_buf = encode(a0)
-  const a1_buf = encode(a1)
-
-  let rawResult = _lib.symbols.add2(
-    a0_buf,
-    a0_buf.byteLength,
-    a1_buf,
-    a1_buf.byteLength,
-  )
-  const result = readPointer(rawResult)
-  return result
-}
 export function add3() {
   let rawResult = _lib.symbols.add3()
   const result = readPointer(rawResult)

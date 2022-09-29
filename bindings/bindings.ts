@@ -45,11 +45,11 @@ const opts = {
   policy: undefined,
 }
 const _lib = await prepare(opts, {
-  add3: { parameters: [], result: "buffer", nonblocking: false },
+  add3: { parameters: ["u64", "u64"], result: "u64", nonblocking: false },
 })
 
-export function add3() {
-  let rawResult = _lib.symbols.add3()
-  const result = readPointer(rawResult)
+export function add3(a0: bigint, a1: bigint) {
+  let rawResult = _lib.symbols.add3(a0, a1)
+  const result = rawResult
   return result
 }

@@ -19,7 +19,7 @@ main = =>
   )
   ###
 
-  a3 = add3()
+  a3 = add3(1,5)
 
   #console.log(a1,a2,a3)
   return
